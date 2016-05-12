@@ -133,6 +133,15 @@ gulpプラグインをインストールする
 
     npm install --save-dev [gulp-<plugin name>]
 
+node_modulesを削除する
+
+    rm -rf node_modules/ && npm cache clean
+
+node_modulesを再インストールする
+
+    rm -rf node_modules/ && npm cache clean && npm install
+
+
 ### インストールオプション
 
 --save
@@ -146,6 +155,7 @@ devDependenciesに追記する。開発環境の依存モジュールを追記�
 --save-optional
 
 optionalDependenciesに追記する。--saveとほぼ同じだが、モジュールが見つからなかった場合はスルーしてくれる。
+
 
 ### gulpfile.js
 
