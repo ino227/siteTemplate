@@ -42,7 +42,7 @@ Vagrant.configure(2) do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
     config.vm.synced_folder "./share_html", "/var/www/html" , type: "rsync" , rsync__exclude: [".git/", "vendor/", "node_modules/", "share_html/app/product"]
-    config.vm.synced_folder "./share_html/app/product", "/var/www/html/app/product"
+    config.vm.synced_folder "./share_html/app/product", "/var/www/html/app/product", create:true
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
