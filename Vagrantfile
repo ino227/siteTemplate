@@ -12,8 +12,11 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "keisuke/centos64"
-  config.exec.commands '*', directory: '/var/www/html'
+  config.hostmanager.enabled = true
+  config.hostmanager.manage_host = true
+  config.vm.define "development.local" do |node|
+    node.vm.box = "keisuke/centos64"
+    node.exec.commands '*', directory: '/var/www/html'
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -27,10 +30,28 @@ Vagrant.configure(2) do |config|
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  config.vm.network "private_network", ip: "192.168.33.10"
-  config.vm.hostname = "vm-node"
-  config.hostmanager.enabled = true
-  config.hostmanager.manage_host = true
+  #config.vm.network "private_network", ip: "192.168.33.10"
+  #config.vm.network "private_network", type: "dhcp"
+
+  node.vm.network "private_network", ip: "192.168.33.10"
+  #node.vm.network :private_network, id: "default-network", type: "dhcp", ip: "192.168.34.1", dhcp_lower: "192.168.34.3", dhcp_upper: "192.168.34.254"
+  node.vm.network :forwarded_port, guest: 22, host: 2222, id: 'ssh', auto_correct: true
+
+  node.hostmanager.ip_resolver = proc do |vm, resolving_vm|
+    ip_address = ''
+    if hostname = (vm.ssh_info && vm.ssh_info[:host])
+      vm.communicate.execute("/sbin/ifconfig eth1 | grep 'inet addr' | tail -n 1 | egrep -o '[0-9\.]+' | head -n 1 2>&1") do |type, contents|
+        ip_address = contents.split("\n").first
+      end
+    end
+    ip_address
+  end
+
+  #config.vm.hostname = "vm-node"
+  node.hostmanager.aliases = ["development.local"]
+  node.ssh.insert_key = false
+
+
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
@@ -41,20 +62,25 @@ Vagrant.configure(2) do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-    config.vm.synced_folder "./share_html", "/var/www/html" , type: "rsync" , rsync__exclude: [".git/", "vendor/", "node_modules/", "share_html/app/product"]
-    config.vm.synced_folder "./share_html/app/product", "/var/www/html/app/product", create:true
+    #node.vm.synced_folder "./share_html", "/var/www/html" , type: "rsync" , rsync__exclude: [".git/", "vendor/", "node_modules/", "share_html/app/product"]
+    #node.vm.synced_folder "./share_html/app/product", "/var/www/html/app/product", create:true
+    #node.vm.synced_folder "./share_html", "/var/www/html" , type: "nfs"
+
+    config.vm.synced_folder "./share_html", "/var/www/html", type: "nfs", mount_options: ["async", "nolock", "nfsvers=3", "vers=3", "tcp", "noatime", "soft", "rsize=8192", "wsize=8192"]
+
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
   #
-  # config.vm.provider "virtualbox" do |vb|
+  node.vm.provider "virtualbox" do |vb|
   #   # Display the VirtualBox GUI when booting the machine
   #   vb.gui = true
   #
   #   # Customize the amount of memory on the VM:
-  #   vb.memory = "1024"
-  # end
+    #メモリを1GB割り当てています。
+     vb.memory = "1024"
+  end
   #
   # View the documentation for the provider you are using for more
   # information on available options.
@@ -73,4 +99,5 @@ Vagrant.configure(2) do |config|
   #   sudo apt-get update
   #   sudo apt-get install -y apache2
   # SHELL
+  end
 end

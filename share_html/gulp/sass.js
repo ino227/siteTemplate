@@ -3,7 +3,7 @@ var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 
 var options = {
-  outputStyle:'compressed',
+  outputStyle:'expanded',//compressed
   sourceMap: true,
   sourceComments: false
 }
