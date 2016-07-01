@@ -14,7 +14,7 @@
 <h1 class="level1">見だし1</h1>
 
 <h2 class="level2">見だし2</h2>
-```
+```a
 
 */
 body {
@@ -110,4 +110,13 @@ The `retina-sprites` mixin generates a CSS rule and media query for retina group
   width: 12px;
   height: 12px;
   display: inline-block;
+}
+
+.centerMiddle {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: end;
+      justify-content: flex-end;
+  -ms-flex-align: center;
+      align-items: center;
 }

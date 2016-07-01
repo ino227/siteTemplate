@@ -13,7 +13,7 @@
 <h1 class="level1">見だし1</h1>
 
 <h2 class="level2">見だし2</h2>
-```
+```a
 
 */
 body{
@@ -40,4 +40,9 @@ body{
 .icon-fb-1{
 	@include sprite($sprite-fb-1);
 	display: inline-block;
+}
+.centerMiddle {
+    display: flex;
+    justify-content:flex-end;
+    align-items: center;
 }

@@ -7,7 +7,15 @@
 http://momijiame.tumblr.com/post/65429388802/vagrant-%E3%81%A7%E4%BD%9C%E3%81%A3%E3%81%9F%E4%BB%AE%E6%83%B3%E3%83%9E%E3%82%B7%E3%83%B3%E3%81%8B%E3%82%89-box-%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E4%BD%9C%E3%82%8A%E3%81%AA%E3%81%8A%E3%81%99
 
 ----
+# ■インストール
+※node.jsなどは予め準備しておいてください。
 
+`npm install`
+
+# ■ejsの使い方
+
+## pages.json
+`ejs/pages.json`で生成したいページを指定する
 
 # apache
 

@@ -16,12 +16,11 @@ var plumber = require('gulp-plumber');
 var eslint = require('gulp-eslint');
 var reload        = browserSync.reload;
 
-gulp.task('html', function(){
-    gulp.src('app/src/**/*.html')
+gulp.task('htmlhint', function(){
+    gulp.src('app/product/**/*.html')
+        .pipe(plumber())
         .pipe(htmlhint('.htmlhintrc'))
         .pipe(htmlhint.reporter())
-        .pipe(gulp.dest('app/product/'))
-        .pipe(browserSync.stream());
 });
 
 // gulp.task("server", function() {
@@ -59,11 +58,12 @@ gulp.task('script',function(){
 });
 
 gulp.task('default', ['browser-sync'], function() {
-    gulp.watch('app/src/sass/*.scss',['sass']);
-    gulp.watch('app/src/**/*.html',['html']);
-    gulp.watch('app/src/js/*.js',['script']);
-    gulp.watch('app/src/js/*.js',['babel']);
     gulp.watch(['app/src/ejs/**/*.ejs', '!app/src/ejs/**/_*.ejs'],['ejs']);
-    gulp.watch('app/src/images/*.js',['imagemin']);
-    gulp.watch('app/product/**/*', reload);
+    gulp.watch('app/product/**/*.html',['htmlhint']);
+    gulp.watch('app/src/sass/*.scss',['sass']);
+    gulp.watch('app/product/css/**/*.css',['frontnote']);
+    gulp.watch('app/src/js/*.js',['script']);
+    //gulp.watch('app/src/images/*.js',['imagemin']);
+    //gulp.watch('app/src/js/*.js',['babel']);
+    //gulp.watch('app/product/**/*', reload);
 });
