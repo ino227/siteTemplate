@@ -1,3 +1,7 @@
+var a = function() {
+    console.log("aだよー");
+};
+
 var date = new Date();
 var element = document.getElementById('time');
 
@@ -6,3 +10,7 @@ function getTime(date){
 };
 
 element.innerHTML = getTime(date);
+
+var b = function() {
+    console.log("bだよー");
+};

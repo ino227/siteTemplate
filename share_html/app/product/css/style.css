@@ -19,11 +19,11 @@
 */
 body {
   color: #000;
-  font-size: 20px;
+  font-size: 222px;
 }
 
 .level1 {
-  font-size: 14px;
+  font-size: 1px;
   color: red;
 }
 
@@ -104,6 +104,39 @@ The `retina-sprites` mixin generates a CSS rule and media query for retina group
 
 @include retina-sprites($retina-groups);
 */
+@font-face {
+  font-family: "iconfont";
+  src: url("../fonts/iconfont.eot");
+  src: url("../fonts/iconfont.eot?#iefix") format("eot"), url("../fonts/iconfont.woff2") format("woff2"), url("../fonts/iconfont.woff") format("woff"), url("../fonts/iconfont.ttf") format("truetype"), url("../fonts/iconfont.svg#iconfont") format("svg");
+}
+
+.icon-heart:before, .icon-home:before, .icon-pdf:before {
+  font-family: "iconfont";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  text-decoration: none;
+  text-transform: none;
+}
+
+.icon-heart:before {
+  content: "";
+}
+
+.icon-home:before {
+  content: "";
+}
+
+.icon-pdf:before {
+  content: "";
+}
+
+.site-header {
+  padding: 200px;
+}
+
 .icon-fb-1 {
   background-image: url(../images/sprite.png);
   background-position: 0px 0px;
@@ -119,4 +152,8 @@ The `retina-sprites` mixin generates a CSS rule and media query for retina group
       justify-content: flex-end;
   -ms-flex-align: center;
       align-items: center;
+}
+
+div {
+  font-size: 12px;
 }

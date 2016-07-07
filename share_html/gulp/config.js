@@ -7,16 +7,24 @@ module.exports = {
 
   // jsのビルド設定
   ejs: {
-    src: src + '/ejs/**',
+    src: src + '/**',
     dest: dest + '/',
-    uglify: false
+    uglify: false,
+    settings : {
+      ext: '.html'
+    }
   },
   //autoprefixer
   css:{
-    src: src + '/sass/**/*.scss',
+    src: src + '/sass/*.scss',
     dest: dest + '/css',
     autoprefixer: {
         browsers: ['last 2 versions']
+    },
+    sassOptions:{
+      outputStyle:'expanded',//compressed
+      sourceMap: true,
+      sourceComments: false
     },
     minifier: false // minify化
   }

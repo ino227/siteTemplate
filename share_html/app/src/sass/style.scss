@@ -18,10 +18,10 @@
 */
 body{
 	color: #000;
-	font-size: 20px;
+	font-size: 222px;
 }
 .level1 {
-	font-size: 14px;
+	font-size: 1px;
 	color: red;
 	&:hover {
 		color: blue;
@@ -36,6 +36,8 @@ body{
 
 
 @import "commons/sprite";
+@import "setting/icons";
+@import "../components/site-header/_site-header";
 
 .icon-fb-1{
 	@include sprite($sprite-fb-1);
@@ -45,4 +47,8 @@ body{
     display: flex;
     justify-content:flex-end;
     align-items: center;
+}
+
+div{
+	font-size: 12px;
 }

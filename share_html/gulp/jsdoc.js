@@ -40,13 +40,13 @@ gulp.task("jsdoc", function() {
   // 書き出されるindex.htmlに「README.md」を埋め込む
   gulp.src(["./app/src/**/*.js", "README.md"])
     .pipe(jsdoc.parser(infos))
-    .pipe(jsdoc.generator("./docs/", template, options))
+    .pipe(jsdoc.generator("./docs/js/", template, options))
 });
 
 // watch
-gulp.task("watch", function() {
-  gulp.watch("./app/src/**/*.js", ["jsdoc"])
-});
+// gulp.task("watch", function() {
+//   gulp.watch("./app/src/**/*.js", ["jsdoc"])
+// });
 
 // 起動時に一度jsdocタスクを実行しwatchを開始
-gulp.task("default", [ "watch", "jsdoc" ]);
+//gulp.task("default", [ "watch", "jsdoc" ]);

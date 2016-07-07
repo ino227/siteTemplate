@@ -12,11 +12,6 @@ http://momijiame.tumblr.com/post/65429388802/vagrant-%E3%81%A7%E4%BD%9C%E3%81%A3
 
 `npm install`
 
-# ■ejsの使い方
-
-## pages.json
-`ejs/pages.json`で生成したいページを指定する
-
 # apache
 
 バージョン

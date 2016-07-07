@@ -1,6 +1,7 @@
 <% var title = "html Title"; %>
-<% include common/_head %>
-<% include common/_header %>
+<% var path = filename.split('/')[filename.split('/').length - 1].replace('.ejs','') %>
+<% include components/_head %>
+<% include components/site-header/_header %>
 <!-- start contents -->
 <div class="main_visual">
     <div class="main_visual_inner">
@@ -11,11 +12,11 @@
 <!-- start contents -->
 <div class="contents">
     <div class="contents_inner">
-        <div class="main">hogaaehoge</div>
+        <div class="main"><i class="icon-heart"></i><%= path %></div>
         <aside class="side"></aside>
         <div><i class="icon-fb-1"></i></div>
     </div>
 </div>
 <!-- end contents -->
-<% include common/_footer %>
-<% include common/_script %>
+<% include components/site-footer/_footer %>
+<% include components/_script %>
