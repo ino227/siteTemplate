@@ -24,7 +24,7 @@ gulp.task('js.uglify', ['js.concat'], function() {
 });
 
 // 監視して処理するのをひとまとめにしておく。
-gulp.task('js', ['js.concat', 'js.uglify']);
+gulp.task('js', ['js.concat', 'js.uglify','jsdoc']);
 
 gulp.task('eslint',function(callback){
   gulp.src('app/src/js/*.js')
@@ -36,7 +36,7 @@ gulp.task('eslint',function(callback){
     .pipe(eslint.failAfterError())
     .pipe(eslint.result(function(result){
       if(result.errorCount !== 0){
-        return 
+        return
       }
       gulp.src(result.filePath)
         .on('end', function(){  // iconfont-hogeが完了してからiconfontを実行

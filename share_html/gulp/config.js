@@ -16,7 +16,7 @@ module.exports = {
   },
   //autoprefixer
   css:{
-    src: src + '/sass/*.scss',
+    src: src + '/**/*.scss',
     dest: dest + '/css',
     autoprefixer: {
         browsers: ['last 2 versions']

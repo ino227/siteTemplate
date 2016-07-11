@@ -1,9 +1,10 @@
 var gulp = require('gulp');
 var frontnote = require('gulp-frontnote');
 var plumber = require('gulp-plumber');
+var config = require('./config');
 
 gulp.task('frontnote', function() {
-	gulp.src('app/product/**/*.css')
+	gulp.src(config.css.src)
 		.pipe(plumber({
 			handleError: function (err) {
 				console.log(err);

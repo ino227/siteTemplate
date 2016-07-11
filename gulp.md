@@ -1,5 +1,12 @@
 # gulp manual
 
+## 使い方
+
+`vagrant up`でvagrantを起動する  
+`vagrant ssh`でvagrantにログイン  
+`cd /var/www/html/`で階層を移動する
+`npm install`でnode moduleをインストールする
+
 ## ディレクトリ構造
 
     share_html （vagrant内と同期）
@@ -25,11 +32,7 @@
     │   └── css（frontnote用フォルダ）
     └── gulp（gulp設定用）
 
-## 使い方
 
-`vagrant ssh`でvagrantにログイン
-
-`cd /var/www/html/`で階層を移動する
 
 
 ## gulpコマンド
